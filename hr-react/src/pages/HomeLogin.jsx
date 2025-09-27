@@ -5,6 +5,7 @@ import {Chart} from "react-google-charts";
 import instance from "../app-logic/instance";
 import {FaEnvelope, FaStar} from "react-icons/fa";
 import useFormData from "../hooks/useFormData";
+import {toast} from "react-toastify";
 
 const HomeLogin = () => {
 
@@ -62,12 +63,13 @@ const HomeLogin = () => {
                     sessionStorage.setItem('token', data.token);
                     sessionStorage.setItem('user', JSON.stringify(data.user));
                     window.location.reload();
+                    toast.success("Login successful!");
                 } else {
-                    alert("Login failed: " + fetchedData.message);
+                    toast.error(fetchedData.message);
                 }
             }).catch(error => {
                 console.error("Error during login:", error);
-                alert("An error occurred during login. Please try again.");
+                toast.error("An error occurred during login. Please try again.");
             })
         }
 

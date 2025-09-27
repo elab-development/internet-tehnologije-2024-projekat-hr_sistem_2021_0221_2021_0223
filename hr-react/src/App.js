@@ -11,6 +11,7 @@ import MyContracts from "./pages/MyContracts";
 import CreateEmployee from "./pages/CreateEmployee";
 import Administration from "./pages/Administration";
 import {Container} from "react-bootstrap";
+import {Bounce, ToastContainer} from "react-toastify";
 
 function App() {
   return (
@@ -30,6 +31,20 @@ function App() {
                 </Routes>
             </BrowserRouter>
         </Container>
+
+        <ToastContainer
+            position="top-right"
+            autoClose={5000}
+            hideProgressBar={false}
+            newestOnTop={false}
+            closeOnClick={false}
+            rtl={false}
+            pauseOnFocusLoss
+            draggable
+            pauseOnHover
+            theme="dark"
+            transition={Bounce}
+        />
     </>
   );
 }

@@ -14,7 +14,7 @@ class ContractItemController extends ResponseHandlerController
 
     public function contractItemsByContract($contractId)
     {
-        $contractItems = \App\Models\ContractItem::where('contract_id', $contractId)->get();
+        $contractItems = \App\Models\ContractItem::where('contract_id', $contractId)->with('position')->get();
         return $this->success(\App\Http\Resources\ResourceContrctItem::collection($contractItems), "Contract items for contract ID {$contractId} retrieved successfully");
     }
 

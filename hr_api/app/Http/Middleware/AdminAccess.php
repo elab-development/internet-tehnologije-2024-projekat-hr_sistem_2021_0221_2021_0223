@@ -17,7 +17,7 @@ class AdminAccess
     {
         $user = $auth = $request->user();
         
-        if (!$user || !$user->role || $user->role->name !== 'admin') {
+        if (!$user || !$user->role || $user->role !== 'admin') {
             return response()->json(['message' => 'Forbidden'], 403);
         }
         return $next($request);

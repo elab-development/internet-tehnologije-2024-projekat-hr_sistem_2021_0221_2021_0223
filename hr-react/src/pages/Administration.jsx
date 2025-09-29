@@ -4,6 +4,7 @@ import instance from "../app-logic/instance";
 import {Col, Row, Table} from "react-bootstrap";
 import {FaTrash} from "react-icons/fa";
 import {toast} from "react-toastify";
+import {CSVLink} from "react-csv";
 
 const Administration = () => {
 
@@ -105,6 +106,21 @@ const Administration = () => {
                         </tr>
                         </tfoot>
                     </Table>
+                </Col>
+            </Row>
+            <Row>
+                <Col md={12} className="mt-3 mb-3">
+                    <Title title="Download data"/>
+                    <div className="d-flex justify-content-center mt-3">
+                        <CSVLink
+                            data={items}
+                            filename={"contract_items.csv"}
+                            className="btn btn-success"
+                            target="_blank"
+                        >
+                            Download Current Page as CSV
+                        </CSVLink>
+                    </div>
                 </Col>
             </Row>
         </div>

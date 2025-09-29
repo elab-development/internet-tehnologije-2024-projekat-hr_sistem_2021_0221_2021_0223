@@ -28,4 +28,5 @@ Route::middleware('auth:sanctum')->group(function () {
 
     Route::post('/register', [\App\Http\Controllers\UserController::class, 'register'])->middleware(\App\Http\Middleware\AdminAccess::class);
     Route::get('/employees', [\App\Http\Controllers\UserController::class,'employees'])->middleware(\App\Http\Middleware\AdminAccess::class);
+    Route::get('/contract-items/paginate', [\App\Http\Controllers\ContractItemController::class, 'paginate'])->middleware(App\Http\Middleware\AdminAccess::class);
 });

@@ -75,4 +75,11 @@ class UserController extends ResponseHandlerController
         $employees = \App\Models\User::where('role', 'employee')->get();
         return $this->success(ResourceUser::collection($employees), "Employees retrieved successfully");
     }
+    public function randomJoke(Request $request)
+    {
+        $client = new \GuzzleHttp\Client();
+        $response = $client->get('https://official-joke-api.appspot.com/random_joke');
+        $joke = json_decode($response->getBody(), true);
+        return $this->success($joke, "Random joke retrieved successfully");
+    }
 }

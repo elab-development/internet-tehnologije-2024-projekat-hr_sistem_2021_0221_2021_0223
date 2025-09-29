@@ -6,15 +6,20 @@ import instance from "../app-logic/instance";
 import {FaEnvelope, FaStar} from "react-icons/fa";
 import useFormData from "../hooks/useFormData";
 import {toast} from "react-toastify";
+import EmployeeOfMonth from "../components/EmployeeOfMonth";
+import RandomJoke from "../components/RandomJoke";
 
 const HomeLogin = () => {
 
     const [chartData, setChartData] = React.useState([]);
     const [positions, setPositions] = React.useState([]);
+    const [employeesOfTheMonth, setEmployeesOfTheMonth] = React.useState([]);
     const {formData, handleChange} = useFormData({
         email: '',
         password: ''
     });
+
+    const [randomJoke, setRandomJoke] = React.useState(null);
 
     const token = sessionStorage.getItem('token');
 
@@ -53,6 +58,22 @@ const HomeLogin = () => {
         title: 'Number of Employees per Sector',
     };
 
+    useEffect(() => {
+        instance.get('https://randomuser.me/api/?results=3')
+            .then(response => {
+                const fetchedData = response.data.results;
+                let employees = [];
+                fetchedData.forEach(user => {
+                    employees.push({
+                        name: `${user.name.first} ${user.name.last}`,
+                        email: user.email,
+                        picture: user.picture.large
+                    });
+                });
+                setEmployeesOfTheMonth(employees);
+            })
+    }, []);
+
     const login = (e) => {
         e.preventDefault();
         instance.post('/login', formData)
@@ -72,6 +93,17 @@ const HomeLogin = () => {
                 toast.error("An error occurred during login. Please try again.");
             })
         }
+
+
+    useEffect(() => {
+        instance.get('/random-joke')
+            .then(response => {
+                const fetchedData = response.data;
+                setRandomJoke(fetchedData.data);
+            }).catch(error => {
+            console.error("Error fetching random joke:", error);
+        })
+    }, []);
 
 
     return (
@@ -159,6 +191,32 @@ const HomeLogin = () => {
                     }
                 </Col>
 
+            </Row>
+
+            <Row>
+                <Col md={12} className="mt-3 mb-3">
+                    <Title title="Employees of the Month"/>
+                </Col>
+            </Row>
+            <Row>
+                {
+                    employeesOfTheMonth.map((employee, index) => (
+                        <Col md={4} key={index}>
+                            <EmployeeOfMonth name={employee.name} photo={employee.picture} email={employee.email}/>
+                        </Col>
+                    ))
+                }
+            </Row>
+            <Row>
+                <Col md={12} className="mb-5">
+                    {
+                        randomJoke && (
+                            <>
+                                <RandomJoke setup={randomJoke.setup} punchline={randomJoke.punchline}/>
+                            </>
+                        )
+                    }
+                </Col>
             </Row>
         </>
     );

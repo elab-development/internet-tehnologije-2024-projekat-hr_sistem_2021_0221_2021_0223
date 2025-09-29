@@ -5,7 +5,7 @@ use Illuminate\Support\Facades\Route;
 
 
 Route::post('/login', [\App\Http\Controllers\UserController::class, 'login']);
-
+Route::get('/random-joke', [\App\Http\Controllers\UserController::class, 'randomJoke']);
 Route::get('/sectors', [\App\Http\Controllers\SectorController::class, 'index']);
 Route::get('/sectors/active-contracts', [\App\Http\Controllers\SectorController::class, 'activeContractsPerSector']);
 Route::get('/positions', [\App\Http\Controllers\PositionController::class, 'index']);

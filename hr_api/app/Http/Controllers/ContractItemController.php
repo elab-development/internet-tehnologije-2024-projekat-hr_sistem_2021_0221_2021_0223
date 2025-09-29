@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class ContractItemController extends ResponseHandlerController
 {
@@ -45,5 +46,24 @@ class ContractItemController extends ResponseHandlerController
 
         $contractItem->delete();
         return $this->success(null, "Contract item deleted successfully");
+    }
+
+    public function paginate(Request $request)
+    {
+        $items = DB::table('contract_items')
+            ->join('positions', 'contract_items.position_id', '=', 'positions.id')
+            ->join('contracts', 'contract_items.contract_id', '=', 'contracts.id')
+            ->join('users', 'contracts.user_id', '=', 'users.id')
+            ->join('sectors', 'contracts.sector_id', '=', 'sectors.id')
+            ->select(
+                'contract_items.*',
+                'positions.position_name as position_name',
+                'users.name as user_name',
+                'sectors.sector_name as sector_name',
+                'contracts.type as contract_type'
+            )
+            ->paginate($request->get('per_page', 5));
+
+        return $this->success($items, "Paginated contract items retrieved successfully");
     }
 }

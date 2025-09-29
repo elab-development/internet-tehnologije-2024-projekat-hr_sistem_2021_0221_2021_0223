@@ -70,4 +70,9 @@ class UserController extends ResponseHandlerController
         $request->user()->currentAccessToken()->delete();
         return $this->success([], "Logged out successfully");
     }
+    public function employees(Request $request)
+    {
+        $employees = \App\Models\User::where('role', 'employee')->get();
+        return $this->success(ResourceUser::collection($employees), "Employees retrieved successfully");
+    }
 }

@@ -5,7 +5,7 @@ use Illuminate\Support\Facades\Route;
 
 
 Route::post('/login', [\App\Http\Controllers\UserController::class, 'login']);
-Route::post('/register', [\App\Http\Controllers\UserController::class, 'register']);
+
 Route::get('/sectors', [\App\Http\Controllers\SectorController::class, 'index']);
 Route::get('/sectors/active-contracts', [\App\Http\Controllers\SectorController::class, 'activeContractsPerSector']);
 Route::get('/positions', [\App\Http\Controllers\PositionController::class, 'index']);
@@ -26,4 +26,6 @@ Route::middleware('auth:sanctum')->group(function () {
     Route::resource('/contract-items', \App\Http\Controllers\ContractItemController::class)->only(['index', 'store', 'destroy'])->middleware(\App\Http\Middleware\AdminAccess::class);
     Route::get('/contracts/{contractId}/contract-items', [\App\Http\Controllers\ContractItemController::class, 'contractItemsByContract']);
 
+    Route::post('/register', [\App\Http\Controllers\UserController::class, 'register'])->middleware(\App\Http\Middleware\AdminAccess::class);
+    Route::get('/employees', [\App\Http\Controllers\UserController::class,'employees'])->middleware(\App\Http\Middleware\AdminAccess::class);
 });

@@ -41,7 +41,14 @@ class ContractController extends ResponseHandlerController
         if (!$contract) {
             return $this->error("Contract not found", null, 404);
         }
-        $contract->delete();
+        $contract->end_date = now();
+        $contract->save();
+
+        $items = \App\Models\ContractItem::where('contract_id', $id)->get();
+        foreach ($items as $item) {
+            $item->end_date = now();
+            $item->save();
+        }
         return $this->success(null, "Contract deleted successfully");
     }
 }

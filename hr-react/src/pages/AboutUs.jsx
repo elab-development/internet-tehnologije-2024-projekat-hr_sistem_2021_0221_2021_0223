@@ -20,6 +20,9 @@ const AboutUs = () => {
             <p>
                 Whether you're a small business or a large enterprise, Axe HR System is designed to scale with your organization's growth. Our customizable solutions allow you to tailor the platform to meet your specific HR needs, making it a versatile choice for businesses across various industries.
             </p>
+            <p>
+                We also take pride in offering exceptional customer support and onboarding assistance, ensuring a smooth transition for your team. Our dedicated support team is always available to provide training, resolve issues, and help you make the most of every feature.
+            </p>
         </div>
     );
 };

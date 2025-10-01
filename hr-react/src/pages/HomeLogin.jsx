@@ -108,7 +108,7 @@ const HomeLogin = () => {
 
     return (
         <>
-            <Title title="Welcome to the Employee Management System" />
+            <Title title="Welcome to the Employee Management System!" />
             <Row className="mt-3">
                 <Col md={6}>
                     {
@@ -130,7 +130,7 @@ const HomeLogin = () => {
                     !token && (
                         <>
                             <Col md={6}>
-                                <h3>Login form</h3>
+                                <h3>Login form for employees and admins</h3>
                                 <Form>
                                     <InputGroup className="mb-3">
                                         <InputGroup.Text id="basic-addon1"><FaEnvelope/></InputGroup.Text>

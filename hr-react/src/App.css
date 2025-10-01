@@ -58,3 +58,53 @@
 .title:hover {
     animation: bounce 0.5s infinite;
 }
+.card {
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: box-shadow 0.3s ease;
+    padding: 20px;
+    border-radius: 10px;
+    background-color: #fff;
+}
+
+.card-title {
+    font-size: 22px !important;
+    margin-bottom: 10px !important;
+    font-weight: bold !important;
+    color: #222 !important;
+    font-style: italic;
+}
+
+.card-header {
+    font-size: 20px;
+    margin-bottom: 15px;
+    color: #444;
+    border-bottom: 2px solid #eee;
+    padding-bottom: 5px;
+    text-align: center;
+}
+
+.card-header:before {
+    content: "🌟 ";
+    color: gold;
+}
+
+.card-header:after {
+    content: "🌟 ";
+    color: gold;
+}
+
+.card:hover {
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+.card-body {
+    font-size: 16px;
+    color: #555;
+    line-height: 1.6;
+}
+
+.card-body h1 {
+    font-size: 28px;
+    margin-bottom: 15px;
+    color: #111;
+}

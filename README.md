@@ -2,7 +2,7 @@
 
 **Jednostavan HR sistem za upravljanje ugovorima, zaposlenima i njihovim performansama.**
 
-## 📌 Opis
+## Opis
 HR sistem Sekira rešava osnovne funkcije jednog HR sistema:
 - upravljanje zaposlenima i njihovim ugovorima  
 - definisanje stavki unutar ugovora  
@@ -11,7 +11,7 @@ HR sistem Sekira rešava osnovne funkcije jednog HR sistema:
 
 Ovo je full-stack aplikacija sa **React frontend-om** i **Laravel API backend-om**, povezana preko **Axios** biblioteke.  
 
-## ✨ Glavne funkcionalnosti
+## Glavne funkcionalnosti
 - Upravljanje korisnicima/zaposlenima  
 - Kreiranje i uređivanje ugovora  
 - Rad sa stavkama ugovora (*Contract Items*)  

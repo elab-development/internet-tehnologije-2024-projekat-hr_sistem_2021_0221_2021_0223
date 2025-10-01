@@ -229,7 +229,7 @@ const CreateEmployee = () => {
                         <InputGroup className="mb-3">
                             <InputGroup.Text id="basic-addon2"><FaStar/></InputGroup.Text>
                             <Form.Control
-                                placeholder="Passwoed"
+                                placeholder="Password"
                                 aria-label="Password"
                                 aria-describedby="basic-addon2"
                                 type="password"
